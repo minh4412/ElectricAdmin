@@ -11,6 +11,7 @@ use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Pages\ViewRecord;
 use Filament\Schemas\Schema;
+use Filament\Actions\DeleteAction;
 
 class ViewBill extends ViewRecord
 {
@@ -59,8 +60,9 @@ class ViewBill extends ViewRecord
                     }, 'phieu-dien-' . $organization->code . '-' . $month . '-' . $year . '.pdf');
                 }),
                 
-            EditAction::make()
-                ->visible(fn () => $this->getRecord()->payment_status !== 'PAID'),
+            // EditAction::make()
+            //     ->visible(fn () => $this->getRecord()->payment_status !== 'PAID'),
+            DeleteAction::make()->label('Xóa'),    
         ];
     }
     

@@ -187,13 +187,12 @@ class MeterReadingForm
                             ->content(function (Get $get): string {
                                 $consumption = $get('_consumption');
                                 if ($consumption !== null && $consumption !== '') {
-                                    $color = $consumption > 0 ? 'text-success-600' : 'text-danger-600';
-                                    return '<span class="font-bold ' . $color . '">' . 
-                                           number_format($consumption, 2) . ' kWh</span>';
+                                    $color = $consumption > 0;
+                                    return number_format($consumption, 2) . ' kWh';
                                 }
                                 return '—';
                             })
-                            ->extraAttributes(['class' => 'text-lg']),
+                            // ->extraAttributes(['class' => 'text-lg']),
                     ]),
             ]);
     }

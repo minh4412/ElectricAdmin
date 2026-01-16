@@ -70,7 +70,7 @@ class BillResource extends Resource
             'index' => ListBills::route('/'),
             'create' => CreateBill::route('/create'),
             'view' => ViewBill::route('/{record}'),
-            'edit' => EditBill::route('/{record}/edit'),
+            // 'edit' => EditBill::route('/{record}/edit'),
         ];
     }
 }

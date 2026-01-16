@@ -24,7 +24,7 @@ class MeterReadingResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedChartBar;
     
-    protected static ?string $modelLabel = 'Chỉ số công tơ';
+    // protected static ?string $modelLabel = 'Chỉ số công tơ';
     
     protected static ?string $pluralModelLabel = 'Chỉ số công tơ';
 

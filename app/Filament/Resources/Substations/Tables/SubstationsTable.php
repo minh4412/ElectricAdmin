@@ -43,7 +43,7 @@ class SubstationsTable
                     ->toggleable(isToggledHiddenByDefault: true),
                     
                 TextColumn::make('electric_meters_count')
-                    ->label('Mã công tơ')
+                    ->label('Số lượng công tơ')
                     ->counts('electricMeters')
                     ->alignCenter()
                     ->badge()

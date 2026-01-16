@@ -42,24 +42,24 @@ class BillDetailsRelationManager extends RelationManager
             ->filters([
                 // you can add filters here if needed
             ])
-            ->headerActions([
-                CreateAction::make()
-                    ->label('Tạo mới')
-                    ->visible(fn () => $this->getOwnerRecord()->payment_status !== 'PAID'),
-            ])
+            // ->headerActions([
+            //     CreateAction::make()
+            //         ->label('Tạo mới')
+            //         ->visible(fn () => $this->getOwnerRecord()->payment_status !== 'PAID'),
+            // ])
             ->recordActions([
                 Action::make('viewMeter')
                     ->label('Xem công tơ')
                     ->icon('heroicon-o-bolt')
                     ->url(fn ($record) => ElectricMeterResource::getUrl('view', ['record' => $record->electric_meter_id]))
                     ->openUrlInNewTab(),
-                ViewAction::make()
-                    ->label('Xem')
-                    ->url(fn ($record) => BillDetailResource::getUrl('view', ['record' => $record]))
-                    ->openUrlInNewTab(),
-                EditAction::make()
-                    ->label('Sửa')
-                    ->visible(fn ($record) => $record->bill->payment_status !== 'PAID'),
+                // ViewAction::make()
+                //     ->label('Xem')
+                //     ->url(fn ($record) => BillDetailResource::getUrl('view', ['record' => $record]))
+                //     ->openUrlInNewTab(),
+                // EditAction::make()
+                //     ->label('Sửa')
+                //     ->visible(fn ($record) => $record->bill->payment_status !== 'PAID'),
             ]);
     }
 

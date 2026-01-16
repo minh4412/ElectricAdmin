@@ -20,6 +20,8 @@ class MeterReadingsTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->defaultSort('reading_date', 'desc')
+            ->paginationPageOptions([10, 25, 50, 100])
             ->columns([
                 TextColumn::make('reading_date')
                     ->label('Ngày ghi')
