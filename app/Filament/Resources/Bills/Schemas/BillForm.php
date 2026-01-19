@@ -22,6 +22,7 @@ class BillForm
                         Select::make('organization_unit_id')
                             ->label('Đơn vị')
                             ->relationship('organizationUnit','name')
+                            ->disabled(fn ($record) => $record !== null)
                             ->required()
                             ->live()
                             ->afterStateUpdated(function ($state, callable $set) {
@@ -55,7 +56,10 @@ class BillForm
                                 
                                 return $options;
                             })
-                            ->default(fn ($record = null) => $record ? null : Carbon::now()->format('Y-m-01'))
+                            ->formatStateUsing(fn ($state) =>
+                                $state ? Carbon::parse($state)->format('Y-m-01') : null
+                            )
+                            ->default(Carbon::now()->format('Y-m-01'))
                             ->required()
                             ->live()
                             ->disabled(fn ($record) => $record !== null) // Disable when editing

@@ -14,13 +14,13 @@ class BillInfolist
         return $schema
             ->components([
                 Section::make('Thông tin hóa đơn')
-                    ->columns(3)
+                    ->columns(2)
                     ->components([
-                        TextEntry::make('bill_number')
-                            ->label('Số hóa đơn')
-                            ->copyable()
-                            ->weight('bold')
-                            ->color('primary'),
+                        // TextEntry::make('bill_number')
+                        //     ->label('Số hóa đơn')
+                        //     ->copyable()
+                        //     ->weight('bold')
+                        //     ->color('primary'),
                         TextEntry::make('organizationUnit.name')
                             ->label('Đơn vị')
                             ->limit(50),
@@ -62,7 +62,7 @@ class BillInfolist
                 Section::make('Chi tiết tiêu thụ')
                     ->description(fn ($record) => 'Tổng số: ' . $record->billDetails()->count() . ' công tơ')
                     ->icon('heroicon-o-bolt')
-                    ->columns(1)
+                    ->columnSpanFull()
                     ->components([
                         RepeatableEntry::make('billDetails')
                             ->label('')

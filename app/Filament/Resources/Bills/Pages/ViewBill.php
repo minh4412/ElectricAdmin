@@ -60,8 +60,8 @@ class ViewBill extends ViewRecord
                     }, 'phieu-dien-' . $organization->code . '-' . $month . '-' . $year . '.pdf');
                 }),
                 
-            // EditAction::make()
-            //     ->visible(fn () => $this->getRecord()->payment_status !== 'PAID'),
+            EditAction::make()
+                ->visible(fn () => $this->getRecord()->payment_status !== 'PAID'),
             DeleteAction::make()->label('Xóa'),    
         ];
     }

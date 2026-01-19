@@ -42,7 +42,7 @@ class BillResource extends Resource
      */
     public static function getEloquentQuery(): Builder
     {
-        $query = parent::getEloquentQuery();
+        $query = parent::getEloquentQuery()->with('billDetails');
         
         return OrganizationHelper::scopeToUserOrganizations($query);
     }
@@ -63,7 +63,7 @@ class BillResource extends Resource
             BillDetailsRelationManager::class,
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [

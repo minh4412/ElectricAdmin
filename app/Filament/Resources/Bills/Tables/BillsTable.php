@@ -37,12 +37,18 @@ class BillsTable
                     ->searchable()
                     ->limit(30)
                     ->wrap(),
-                TextColumn::make('details_count')
-                    ->label('Số công tơ')
-                    ->counts('billDetails')
-                    ->badge()
-                    ->color('success')
-                    ->alignCenter(),
+                TextColumn::make('consumption')
+                    ->label('Tiêu thụ điện')
+                    ->getStateUsing(fn ($record) =>
+                        $record->billDetails->sum('consumption')
+                    )
+                    ->suffix(' kWh'),
+                // TextColumn::make('details_count')
+                //     ->label('Số công tơ')
+                //     ->counts('billDetails')
+                //     ->badge()
+                //     ->color('success')
+                //     ->alignCenter(),
                 TextColumn::make('total_amount')
                     ->label('Tổng tiền')
                     ->money('VND', true)

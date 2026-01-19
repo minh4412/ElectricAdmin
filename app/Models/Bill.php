@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use App\Models\ElectricMeter;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 /**
  * @property int $id
@@ -47,6 +50,11 @@ class Bill extends Model
         return $this->belongsTo(OrganizationUnit::class);
     }
 
+    public function electricMeter()
+    {
+        return $this->belongsTo(ElectricMeter::class);
+    }
+    
     public function billDetails()
     {
         return $this->hasMany(BillDetail::class);
